@@ -8,42 +8,53 @@
 </head>
 <body>
     <header>
-        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-            <div class="container-fluid">
-              <a class="navbar-brand" href="/">Ceneo web scrapper</a>
-              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-              </button>
-      
-              <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
-                  <li class="nav-item">
-                    <a class="nav-link {% if request.path == '/' %}active{% endif %}" href="/">Strona Główna</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link {% if request.path == '/extract' %}active{% endif %}" href="/extract">Wyodrębnij</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link {% if request.path == '/products' %}active{% endif %}" href="/products">Produkty</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link {% if request.path == '/author' %}active{% endif %}" href="/author">Autor</a>
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </nav>
-    </header>
-    <nav></nav>
-    <section>
-        <div class="container mt-4">
-            {% block content %}
-            <h1>Witamy na stronie głównej!</h1>
-            {% endblock %}
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="/">Ceneo.pl web scrapper</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Przełącz nawigację">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+  
+          <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+              <li class="nav-item">
+                <a class="nav-link {% if request.path == '/' %}active{% endif %}" href="{{url_for('index')}}">Strona Główna</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link {% if request.path == '/extract' %}active{% endif %}" href="{{url_for('extract')}}">Wyodrębnij</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link {% if request.path == '/products' %}active{% endif %}" href="{{url_for('products')}}">Produkty</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link {% if request.path == '/author' %}active{% endif %}" href="{{url_for('author')}}">Autor</a>
+              </li>
+            </ul>
+          </div>
         </div>
-    </section>
-    <footer></footer>
+      </nav>
+  
+      
+      <div class="container mt-5">
+        <h1 class="mb-4">
+          {% block title %}
+
+          {% endblock %}
+        </h1>
+        <h2 class="lead">
+          {% block content %}
+          
+          {% endblock %}
+      </h2>
+      </div>
+  
+      
+      <footer class="bg-dark text-white text-center py-3 mt-5">
+        <div class="container">
+          <small>&copy; 2025 Ceneo.pl web scrapper. Wszelkie prawa zastrzeżone.</small>
+        </div>
+      </footer>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js" integrity="sha384-k6d4wzSIapyDyv1kpU366/PK5hCdSbCRGRCMv+eplOQJWyd1fbcAu9OCUj5zNLiq" crossorigin="anonymous"></script>
 </body>
 </html>
