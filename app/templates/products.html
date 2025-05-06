@@ -1,6 +1,38 @@
 {% extends "base.html" %}
 
 {% block content %}
-  <h2>Lista produktów</h2>
-  <p>Tu będą wyświetlane wszystkie produkty.</p>
+<div class="container mt-4">
+    <h2 class="mb-4">Lista produktów</h2>
+    
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Nazwa produktu</th>
+                <th>Liczba opinii</th>
+                <th>Liczba zalet</th>
+                <th>Liczba wad</th>
+                <th>Średnia ocena</th>
+                <th>Pobierz opinie</th>
+            </tr>
+        </thead>
+        <tbody>
+          {% for product in products %}
+            <tr>
+                <td>
+                    <a href="/products/{{ product.id }}" class="fw-bold">{{ product.product_name }}</a>
+                </td>
+                <td>{{ product.opinions_count }}</td>
+                <td>{{ product.pros_count }}</td>
+                <td>{{ product.cons_count }}</td>
+                <td>⭐ {{ product.average_stars|round(2) }}</td>
+                <td>
+                    <a href="/download/csv/{{ product.id }}" class="btn btn-sm btn-success">CSV</a>
+                    <a href="/download/xlsx/{{ product.id }}" class="btn btn-sm btn-primary">Excel</a>
+                    <a href="/download/json/{{ product.id }}" class="btn btn-sm btn-warning">JSON</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
 {% endblock %}

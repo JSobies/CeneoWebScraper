@@ -1,5 +1,6 @@
+import os
 from app import app
-from flask import render_template,request,redirect, url_for
+from flask import render_template,request,redirect, url_for,json
 
 @app.route('/')
 def index(): 
@@ -21,7 +22,13 @@ def extract():
 
 @app.route('/products')
 def products(): 
-    return render_template("products.html")
+    products = []
+    for file in os.listdir("./app/data/products"):
+        if file.endswith(".json"):
+            with open(os.path.join("./app/data/products", file), "r", encoding="utf-8") as f:
+                data = json.load(f)
+                products.append(data)
+    return render_template("products.html",products = products)
 
 @app.route('/author')
 def author(): 
