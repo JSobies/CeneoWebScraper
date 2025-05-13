@@ -22,7 +22,7 @@
                 <a class="nav-link {% if request.path == '/' %}active{% endif %}" href="{{url_for('index')}}">Strona Główna</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link {% if request.path == '/extract' %}active{% endif %}" href="{{url_for('extract')}}">Wyodrębnij</a>
+                <a class="nav-link {% if request.path == '/extract' %}active{% endif %}" href="{{url_for('display_form')}}">Wyodrębnij</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link {% if request.path == '/products' %}active{% endif %}" href="{{url_for('products')}}">Produkty</a>

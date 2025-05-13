@@ -1,31 +1,17 @@
 {% extends "base.html" %}
 
 {% block content %}
-<div class="container mt-4">
-  <h2 class="mb-4">Ekstrakcja opinii</h2>
-  <form action="/extract" method="post">
-    <div class="mb-3">
-      <label for="productUrl" class="form-label">Adres URL produktu lub zapytanie</label>
-      <input type="text" class="form-control" id="productUrl" name="product_url" placeholder="https://..." required>
-    </div>
-
-    <div class="mb-3">
-      <label for="numOpinions" class="form-label">Liczba opinii do pobrania</label>
-      <input type="number" class="form-control" id="numOpinions" name="num_opinions" min="1" max="1000" value="50">
-    </div>
-
-    <div class="mb-3">
-      <label class="form-label">Filtruj po ocenie</label>
-      <select class="form-select" name="rating_filter">
-        <option value="">Wszystkie</option>
-        <option value="5">Tylko 5 gwiazdek</option>
-        <option value="4">4+ gwiazdek</option>
-        <option value="3">3+ gwiazdek</option>
-        <option value="1">Wszystkie (1+)</option>
-      </select>
-    </div>
-
-    <button type="submit" class="btn btn-primary">Wyodrębnij opinie</button>
-  </form>
-</div>
+<form class="container mt-3 mb-3" method="post">
+  <div class="row d-flex align-items-baseline">
+      <div class="col d-flex justify-content-end">
+          <label for="product_id" class="form-label">Podaj kod produktu</label>
+      </div>
+      <div class="col d-flex">
+          <input type="text" class="form-control" name="product_id" id="product_id" placeholder="Kod produktu" required>
+      </div>
+      <div class="col d-flex">
+          <button type="submit" class="btn btn-primary">Pobierz opinie</button>
+      </div>
+  </div>
+</form>
 {% endblock %}

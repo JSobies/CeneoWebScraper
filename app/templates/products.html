@@ -19,16 +19,16 @@
           {% for product in products %}
             <tr>
                 <td>
-                    <a href="/products/{{ product.id }}" class="fw-bold">{{ product.product_name }}</a>
+                    <a href="/product/{{product.product_id}}" class="fw-bold">{{ product.product_name }}</a>
                 </td>
                 <td>{{ product.opinions_count }}</td>
                 <td>{{ product.pros_count }}</td>
                 <td>{{ product.cons_count }}</td>
                 <td>⭐ {{ product.average_stars|round(2) }}</td>
                 <td>
-                    <a href="/download/csv/{{ product.id }}" class="btn btn-sm btn-success">CSV</a>
-                    <a href="/download/xlsx/{{ product.id }}" class="btn btn-sm btn-primary">Excel</a>
-                    <a href="/download/json/{{ product.id }}" class="btn btn-sm btn-warning">JSON</a>
+                    <a href="/download/csv/{{product.product_id}}" class="btn btn-sm btn-success">CSV</a>
+                    <a href="/download/xlsx/{{product.product_id}}" class="btn btn-sm btn-primary">Excel</a>
+                    <a href="/download/json/{{product.product_id}}" class="btn btn-sm btn-warning">JSON</a>
                 </td>
             </tr>
             {% endfor %}
